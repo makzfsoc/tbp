@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cmath>
 
+const double G = 6.67E-11;
+
 class Vector {
 public:
     Vector();
@@ -46,6 +48,37 @@ void Vector::setX(double x) { this->x = x; }
 
 double Vector::getY() { return y; }
 void Vector::setY(double y) { this->y = y; }
+
+class Body {
+public:
+    Body();
+    Body(double mass, Vector position);
+
+    double get_mass();
+    void set_mass(double mass);
+
+    Vector get_position();
+    void set_position(Vector position);
+private:
+    double mass;
+    Vector position;
+};
+
+Body::Body() {
+    mass = 1.0;
+    position = Vector();
+}
+
+Body::Body(double mass, Vector position) {
+    this->mass = mass;
+    this->position = position;
+}
+
+double Body::get_mass() { return mass; }
+void Body::set_mass(double mass) { this->mass = mass; }
+
+Vector Body::get_position() { return position; }
+void Body::set_position(Vector position) { this->position = position; }
 
 int main() {
     return 0;
